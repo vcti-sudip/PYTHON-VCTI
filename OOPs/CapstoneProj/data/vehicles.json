@@ -1,0 +1,186 @@
+[
+  {
+    "vehicle_id": "KA001",
+    "type": "Car",
+    "registration_number": "JH01ABC123",
+    "brand": "Toyota",
+    "model": "Camry",
+    "daily_rate": 2000.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA002",
+    "type": "Car",
+    "registration_number": "JH01XYZ789",
+    "brand": "Honda",
+    "model": "Civic",
+    "daily_rate": 1800.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA003",
+    "type": "Car",
+    "registration_number": "JH01LMN456",
+    "brand": "Ford",
+    "model": "Focus",
+    "daily_rate": 1600.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA004",
+    "type": "Car",
+    "registration_number": "JH01DEF101",
+    "brand": "Hyundai",
+    "model": "Elantra",
+    "daily_rate": 1700.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA005",
+    "type": "Car",
+    "registration_number": "JH01GHI202",
+    "brand": "Chevrolet",
+    "model": "Tahoe",
+    "daily_rate": 3800.0,
+    "available": false
+  },
+  {
+    "vehicle_id": "KA006",
+    "type": "Car",
+    "registration_number": "JH01JKL303",
+    "brand": "BMW",
+    "model": "3 Series",
+    "daily_rate": 4200.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA007",
+    "type": "Car",
+    "registration_number": "JH01MNO404",
+    "brand": "Mercedes-Benz",
+    "model": "C-Class",
+    "daily_rate": 4500.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA008",
+    "type": "Bike",
+    "registration_number": "JH01PQR505",
+    "brand": "Yamaha",
+    "model": "YZF-R3",
+    "daily_rate": 900.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA009",
+    "type": "Bike",
+    "registration_number": "JH01STU606",
+    "brand": "Kawasaki",
+    "model": "Ninja 400",
+    "daily_rate": 1100.0,
+    "available": false
+  },
+  {
+    "vehicle_id": "KA010",
+    "type": "Bike",
+    "registration_number": "JH01VWX707",
+    "brand": "Honda",
+    "model": "CBR500R",
+    "daily_rate": 1200.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA011",
+    "type": "Bike",
+    "registration_number": "JH01YZA808",
+    "brand": "Harley-Davidson",
+    "model": "Iron 883",
+    "daily_rate": 2200.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA012",
+    "type": "Bike",
+    "registration_number": "JH01BCD909",
+    "brand": "Royal Enfield",
+    "model": "Classic 350",
+    "daily_rate": 800.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA013",
+    "type": "Van",
+    "registration_number": "JH01EFG010",
+    "brand": "Ford",
+    "model": "Transit Passenger Van",
+    "daily_rate": 5000.0,
+    "available": true,
+    "service_charge": 500.0
+  },
+  {
+    "vehicle_id": "KA014",
+    "type": "Van",
+    "registration_number": "JH01HIJ121",
+    "brand": "Mercedes-Benz",
+    "model": "Sprinter",
+    "daily_rate": 6500.0,
+    "available": false,
+    "service_charge": 750.0
+  },
+  {
+    "vehicle_id": "KA015",
+    "type": "Van",
+    "registration_number": "JH01KLM232",
+    "brand": "Dodge",
+    "model": "Grand Caravan",
+    "daily_rate": 4200.0,
+    "available": true,
+    "service_charge": 500.0
+  },
+  {
+    "vehicle_id": "KA016",
+    "type": "Van",
+    "registration_number": "JH01NOP343",
+    "brand": "Volkswagen",
+    "model": "Transporter",
+    "daily_rate": 4800.0,
+    "available": true,
+    "service_charge": 500.0
+  },
+  {
+    "vehicle_id": "KA017",
+    "type": "Car",
+    "registration_number": "JH01QRS454",
+    "brand": "Tesla",
+    "model": "Model 3",
+    "daily_rate": 3500.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA018",
+    "type": "Car",
+    "registration_number": "JH01TUV565",
+    "brand": "Nissan",
+    "model": "Rogue",
+    "daily_rate": 2400.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "KA019",
+    "type": "Car",
+    "registration_number": "JH01WXY676",
+    "brand": "Jeep",
+    "model": "Wrangler",
+    "daily_rate": 3900.0,
+    "available": false
+  },
+  {
+    "vehicle_id": "KA020",
+    "type": "Bike",
+    "registration_number": "JH01ZAB787",
+    "brand": "Ducati",
+    "model": "Scrambler",
+    "daily_rate": 2500.0,
+    "available": true
+  }
+]

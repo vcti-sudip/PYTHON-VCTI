@@ -1,0 +1,94 @@
+
+========================================================================
+                    VEHICLE RENTAL MANAGEMENT SYSTEM                    
+========================================================================
+1. Display available vehicles
+2. Search vehicles
+3. Register customer
+4. Add vehicle
+5. Rent vehicle
+6. Return vehicle / invoice
+7. Customer rental history
+8. Show rental records
+9. Run mandatory assignment demo
+0. Exit
+
+Select an option: 
+========================================================================
+                       MANDATORY ASSIGNMENT DEMO                        
+========================================================================
+1. One car, one bike and one van are available for the demo.
+
+========================================================================
+                           AVAILABLE VEHICLES                           
+========================================================================
+ID         Type | Brand            | Model              | Rate            | Status
+----------------------------------------------------------------------------------------
+KA001      | Car  | Toyota           | Camry              | Rs. 2,000.00/day | Available
+KA002      | Car  | Honda            | Civic              | Rs. 1,800.00/day | Available
+KA003      | Car  | Ford             | Focus              | Rs. 1,600.00/day | Available
+KA004      | Car  | Hyundai          | Elantra            | Rs. 1,700.00/day | Available
+KA006      | Car  | BMW              | 3 Series           | Rs. 4,200.00/day | Available
+KA007      | Car  | Mercedes-Benz    | C-Class            | Rs. 4,500.00/day | Available
+KA008      | Bike | Yamaha           | YZF-R3             | Rs. 900.00/day | Available
+KA010      | Bike | Honda            | CBR500R            | Rs. 1,200.00/day | Available
+KA011      | Bike | Harley-Davidson  | Iron 883           | Rs. 2,200.00/day | Available
+KA012      | Bike | Royal Enfield    | Classic 350        | Rs. 800.00/day | Available
+KA013      | Van  | Ford             | Transit Passenger Van | Rs. 5,000.00/day | Available
+KA015      | Van  | Dodge            | Grand Caravan      | Rs. 4,200.00/day | Available
+KA016      | Van  | Volkswagen       | Transporter        | Rs. 4,800.00/day | Available
+KA017      | Car  | Tesla            | Model 3            | Rs. 3,500.00/day | Available
+KA018      | Car  | Nissan           | Rogue              | Rs. 2,400.00/day | Available
+KA020      | Bike | Ducati           | Scrambler          | Rs. 2,500.00/day | Available
+V101       | Car  | Toyota           | Camry              | Rs. 2,000.00/day | Available
+V102       | Bike | Yamaha           | MT-15              | Rs. 700.00/day | Available
+V103       | Van  | Tata             | Winger             | Rs. 3,000.00/day | Available
+
+2. Customer A rents V101 for 3 days.
+Base rental amount: Rs. 6,000.00
+
+3. Attempt Customer B renting the same car.
+Expected Vehicle unavailable message: Vehicle V101 is not available for rent.
+
+4. Payment completed successfully before rental confirmation.
+Transaction: CARD-7A124DB3
+
+5. Return car one day late on 2026-08-30.
+
+=======================================================
+                 FINAL RENTAL INVOICE
+=======================================================
+Rental ID       : R0001
+Customer        : Ananya Sharma (DEMO001)
+Vehicle         : Car V101
+Model           : Toyota Camry
+Rental Days     : 3
+Base Amount     : Rs. 6,000.00
+Late Fee        : Rs. 400.00
+Final Amount    : Rs. 6,400.00
+=======================================================
+
+6. Vehicle availability after return:
+V101 available = True
+
+7. Customer A rental history:
+R0001 | Car V101 | 2026-08-26 -> 2026-08-30 | Rs. 6,400.00 | COMPLETED
+
+Mandatory scenario completed successfully.
+
+========================================================================
+                    VEHICLE RENTAL MANAGEMENT SYSTEM                    
+========================================================================
+1. Display available vehicles
+2. Search vehicles
+3. Register customer
+4. Add vehicle
+5. Rent vehicle
+6. Return vehicle / invoice
+7. Customer rental history
+8. Show rental records
+9. Run mandatory assignment demo
+0. Exit
+
+Select an option: 
+Thank you for using the Vehicle Rental Management System.

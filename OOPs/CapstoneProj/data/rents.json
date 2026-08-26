@@ -1,0 +1,22 @@
+[
+  {
+    "rental_id": "R0001",
+    "customer_id": "vcti-001",
+    "vehicle_id": "KA008",
+    "start_date": "2026-08-26",
+    "expected_return_date": "2026-08-31",
+    "actual_return_date": "2026-10-05",
+    "days": 5,
+    "base_amount": 4500.0,
+    "late_fee": 6300.0,
+    "final_amount": 10800.0,
+    "status": "COMPLETED",
+    "payment": {
+      "success": true,
+      "transaction_id": "UPI-09791121",
+      "method": "UPI",
+      "amount": 4500.0,
+      "message": "Payment completed successfully."
+    }
+  }
+]

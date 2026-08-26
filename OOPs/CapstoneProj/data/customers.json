@@ -1,0 +1,32 @@
+[
+  {
+    "customer_id": "vcti-001",
+    "name": "Sudip Das",
+    "email": "sudip.das@example.com",
+    "driving_license_number": "D1234567"
+  },
+  {
+    "customer_id": "vcti-002",
+    "name": "Showvick Bhattacharjee",
+    "email": "showvick.bhattacharjee@example.com",
+    "driving_license_number": "D7654321"
+  },
+  {
+    "customer_id": "vcti-003",
+    "name": "Ayush Kumar",
+    "email": "ayush.kumar@example.com",
+    "driving_license_number": "D3456789"
+  },
+  {
+    "customer_id": "vcti-004",
+    "name": "Nitesh Tiwari",
+    "email": "nitesh.tiwari@example.com",
+    "driving_license_number": "D9876543"
+  },
+  {
+    "customer_id": "vcti-005",
+    "name": "Rohit Sharma",
+    "email": "rohit.sharma@example.com",
+    "driving_license_number": "D5678901"
+  }
+]
