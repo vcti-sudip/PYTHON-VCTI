@@ -1,0 +1,38 @@
+[
+    {
+        "id": "E001",
+        "name": "John",
+        "department": "IT",
+        "salary": 50000,
+        "bonus": 5000,
+        "deductions": 2000,
+        "attendance": {
+            "days_present": 20,
+            "days_absent": 2
+        }
+    },
+    {
+        "id": "E002",
+        "name": "Alice",
+        "department": "HR",
+        "salary": 45000,
+        "bonus": 3000,
+        "deductions": 1500,
+        "attendance": {
+            "days_present": 22,
+            "days_absent": 0
+        }
+    },
+    {
+        "id": "E003",
+        "name": "Bob",
+        "department": "Finance",
+        "salary": 55000,
+        "bonus": 4000,
+        "deductions": 2500,
+        "attendance": {
+            "days_present": 18,
+            "days_absent": 4
+        }
+    }
+]
