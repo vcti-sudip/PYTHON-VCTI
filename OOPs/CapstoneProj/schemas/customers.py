@@ -4,7 +4,6 @@ from .exceptions import ValidationError
 
 
 class Customer:
-    """Customer domain object with encapsulated personal data and rental history."""
 
     def __init__(self, customer_id, name, email, driving_license_number):
         self.__customer_id = self._required(customer_id, "Customer ID")

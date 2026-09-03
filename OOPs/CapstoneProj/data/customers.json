@@ -28,5 +28,17 @@
     "name": "Rohit Sharma",
     "email": "rohit.sharma@example.com",
     "driving_license_number": "D5678901"
+  },
+  {
+    "customer_id": "DEMO001",
+    "name": "Ananya Sharma",
+    "email": "ananya.sharma@example.com",
+    "driving_license_number": "DL-DEMO-001"
+  },
+  {
+    "customer_id": "DEMO002",
+    "name": "Rahul Verma",
+    "email": "rahul.verma@example.com",
+    "driving_license_number": "DL-DEMO-002"
   }
 ]

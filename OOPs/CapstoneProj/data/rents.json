@@ -18,5 +18,45 @@
       "amount": 4500.0,
       "message": "Payment completed successfully."
     }
+  },
+  {
+    "rental_id": "R0002",
+    "customer_id": "vcti-002",
+    "vehicle_id": "KA013",
+    "start_date": "2026-09-03",
+    "expected_return_date": "2026-09-13",
+    "actual_return_date": "2026-09-15",
+    "days": 10,
+    "base_amount": 50500.0,
+    "late_fee": 2000.0,
+    "final_amount": 52500.0,
+    "status": "COMPLETED",
+    "payment": {
+      "success": true,
+      "transaction_id": "UPI-051BD6BB",
+      "method": "UPI",
+      "amount": 50500.0,
+      "message": "Payment completed successfully."
+    }
+  },
+  {
+    "rental_id": "R0003",
+    "customer_id": "DEMO001",
+    "vehicle_id": "V101",
+    "start_date": "2026-09-03",
+    "expected_return_date": "2026-09-06",
+    "actual_return_date": "2026-09-07",
+    "days": 3,
+    "base_amount": 6000.0,
+    "late_fee": 400.0,
+    "final_amount": 6400.0,
+    "status": "COMPLETED",
+    "payment": {
+      "success": true,
+      "transaction_id": "CARD-3A44164B",
+      "method": "Card",
+      "amount": 6000.0,
+      "message": "Payment completed successfully."
+    }
   }
 ]

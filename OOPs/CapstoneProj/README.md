@@ -2,6 +2,17 @@
 
 A console-based Vehicle Rental Management System developed in Python using Object-Oriented Programming (OOP) principles.
 
+## Streamlit application
+
+Run the simple booking interface with:
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+The app is called **Rent Your Ride** and includes vehicle search, customer registration, booking, payments, returns with invoices, rental history, rental records, and vehicle management.
+
 This project was built as part of the OOP Case Study Assignment and demonstrates abstraction, encapsulation, inheritance, polymorphism, interfaces, composition, exception handling, and file-based persistence.
 
 ---

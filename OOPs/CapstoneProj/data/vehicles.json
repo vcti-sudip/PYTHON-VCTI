@@ -182,5 +182,33 @@
     "model": "Scrambler",
     "daily_rate": 2500.0,
     "available": true
+  },
+  {
+    "vehicle_id": "V101",
+    "type": "Car",
+    "registration_number": "JH01DEMO1",
+    "brand": "Toyota",
+    "model": "Camry",
+    "daily_rate": 2000.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "V102",
+    "type": "Bike",
+    "registration_number": "JH01DEMO2",
+    "brand": "Yamaha",
+    "model": "MT-15",
+    "daily_rate": 700.0,
+    "available": true
+  },
+  {
+    "vehicle_id": "V103",
+    "type": "Van",
+    "registration_number": "JH01DEMO3",
+    "brand": "Tata",
+    "model": "Winger",
+    "daily_rate": 3000.0,
+    "available": true,
+    "service_charge": 500.0
   }
 ]

@@ -124,6 +124,7 @@ class RentalService:
         self.save_data()
         return invoice
 
+
     def add_existing_rental(self, rental):
         self.__rentals[rental.rental_id] = rental
         rental.customer.add_rental(rental)
