@@ -13,7 +13,6 @@ class PaymentResult:
 
 
 class PaymentProcessor(ABC):
-    """Payment contract used by RentalService (dependency inversion)."""
 
     @abstractmethod
     def process_payment(self, amount):
@@ -53,4 +52,17 @@ class UPIPayment(PaymentProcessor):
             "UPI",
             float(amount),
             "Payment completed successfully.",
+        )
+
+
+class CashPayment(PaymentProcessor):
+    def process_payment(self, amount):
+        if amount <= 0:
+            return PaymentResult(False, "", "Cash on Delivery", amount, "Amount must be positive.")
+        return PaymentResult(
+            True,
+            f"CASH-{uuid4().hex[:8].upper()}",
+            "Cash on Delivery",
+            float(amount),
+            "Cash on delivery selected.",
         )

@@ -1,5 +1,5 @@
 class Invoice:
-    """Invoice composed from a completed Rental."""
+    """Invoice generated for a completed rental."""
 
     def __init__(self, rental):
         self.__rental = rental

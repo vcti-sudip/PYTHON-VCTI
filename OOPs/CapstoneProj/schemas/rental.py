@@ -99,12 +99,17 @@ class Rental:
             raise RentalStateError("Return date cannot be before the rental start date.")
 
         self.__actual_return_date = actual_return_date
-        late_days = max(0, (actual_return_date - self.expected_return_date).days)
-        self.__late_fee = late_days * (self.LATE_FEE_RATE * self.vehicle.daily_rate)
+        self.__late_fee = self.calculate_late_fee(actual_return_date)
         self.__final_amount = self.__base_amount + self.__late_fee
         self.__status = "COMPLETED"
         self.__invoice = Invoice(self)
         return self.__invoice
+
+    def calculate_late_fee(self, actual_return_date):
+        if not isinstance(actual_return_date, date):
+            raise RentalStateError("Return date must be a valid date.")
+        late_days = max(0, (actual_return_date - self.expected_return_date).days)
+        return late_days * (self.LATE_FEE_RATE * self.vehicle.daily_rate)
 
     def __str__(self):
         return (

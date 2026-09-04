@@ -6,7 +6,7 @@ import streamlit as st
 from main import create_service
 from schemas.customers import Customer
 from schemas.exceptions import RentalError
-from schemas.payment import CardPayment, UPIPayment
+from schemas.payment import CardPayment, CashPayment, UPIPayment
 from schemas.vehicles import Bike, Car, Van
 
 
@@ -74,22 +74,29 @@ def booking_page(service):
     if not available:
         st.warning("There are no available vehicles right now.")
         return
+    today = date.today()
 
-    with st.form("booking_form"):
-        vehicle = st.selectbox("Choose a vehicle", available, format_func=vehicle_label)
-        customer_options = list(service.customers)
-        customer = st.selectbox(
-            "Customer", customer_options, format_func=lambda item: f"{item.name} ({item.customer_id})"
-        )
-        start_date = st.date_input("Pick-up date", value=date.today(), min_value=date.today())
-        days = st.number_input("Rental days", min_value=1, max_value=365, value=1, step=1)
-        payment_method = st.radio("Payment method", ["Card", "UPI"], horizontal=True)
-        submitted = st.form_submit_button("Confirm booking", type="primary")
+    vehicle = st.selectbox("Choose a vehicle", available, format_func=vehicle_label)
+    customer_options = list(service.customers)
+    customer = st.selectbox(
+        "Customer", customer_options, format_func=lambda item: f"{item.name} ({item.customer_id})"
+    )
+    start_date = st.date_input("Pick-up date", value=today, min_value=today)
+    days = st.number_input("Rental days", min_value=1, max_value=365, value=1, step=1)
+    payment_method = st.radio(
+        "Payment method", ["Card", "UPI", "Cash on Delivery"], horizontal=True
+    )
 
     estimate = vehicle.calculate_rental_cost(int(days))
     st.metric("Estimated total", money(estimate))
+    submitted = st.button("Confirm booking", type="primary")
     if submitted:
-        payment = CardPayment() if payment_method == "Card" else UPIPayment()
+        payment_classes = {
+            "Card": CardPayment,
+            "UPI": UPIPayment,
+            "Cash on Delivery": CashPayment,
+        }
+        payment = payment_classes[payment_method]()
         try:
             rental = service.rent_vehicle(
                 customer.customer_id, vehicle.vehicle_id, int(days), payment, start_date=start_date
@@ -110,6 +117,7 @@ def return_page(service):
         st.info("There are no active rentals to return.")
         return
 
+    today = date.today()
     with st.form("return_form"):
         rental = st.selectbox(
             "Active rental",
@@ -117,15 +125,46 @@ def return_page(service):
             format_func=lambda item: f"{item.rental_id} - {item.vehicle.brand} {item.vehicle.model} for {item.customer.name}",
         )
         st.caption(f"Expected return: {rental.expected_return_date}")
-        return_date = st.date_input("Actual return date", value=date.today(), min_value=rental.start_date)
+        return_default = max(today, rental.start_date)
+        return_date = st.date_input(
+            "Actual return date", value=return_default, min_value=rental.start_date
+        )
+        late_fee = rental.calculate_late_fee(return_date)
+        late_payment_method = None
+        if late_fee > 0:
+            st.warning(f"Late fee due: {money(late_fee)}")
+            late_payment_method = st.radio(
+                "Pay late fee only with", ["Card", "UPI", "Cash on Delivery"], horizontal=True
+            )
         submitted = st.form_submit_button("Return vehicle", type="primary")
 
     if submitted:
         try:
-            invoice = service.return_vehicle(rental.rental_id, return_date)
+            payment_classes = {
+                "Card": CardPayment,
+                "UPI": UPIPayment,
+                "Cash on Delivery": CashPayment,
+            }
+            late_fee_payment = (
+                payment_classes[late_payment_method]() if late_payment_method else None
+            )
+            invoice = service.return_vehicle(
+                rental.rental_id, return_date, late_fee_payment_processor=late_fee_payment
+            )
             details = invoice.generate()
             st.success(f"Vehicle returned. Invoice {rental.rental_id} is ready.")
-            st.json(details)
+            st.subheader("Final rental invoice")
+            invoice_left, invoice_right = st.columns(2)
+            with invoice_left:
+                st.write(f"**Customer:** {details['customer_name']} ({details['customer_id']})")
+                st.write(f"**Vehicle:** {details['vehicle_brand']} {details['vehicle_model']}")
+                st.write(f"**Rental days:** {details['rental_days']}")
+            with invoice_right:
+                st.write(f"**Base amount:** {money(details['base_amount'])}")
+                st.write(f"**Late fee:** {money(details['late_fee'])}")
+                st.write(f"**Final amount:** {money(details['final_amount'])}")
+            if late_fee_payment:
+                st.caption(f"Late fee paid via {late_payment_method}.")
         except RentalError as error:
             st.error(str(error))
 

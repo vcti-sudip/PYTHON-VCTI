@@ -60,7 +60,7 @@
     "brand": "Mercedes-Benz",
     "model": "C-Class",
     "daily_rate": 4500.0,
-    "available": true
+    "available": false
   },
   {
     "vehicle_id": "KA008",

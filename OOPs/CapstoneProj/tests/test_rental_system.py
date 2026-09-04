@@ -10,7 +10,7 @@ from schemas.exceptions import (
     PaymentProcessingError,
     VehicleNotAvailableError,
 )
-from schemas.payment import CardPayment, UPIPayment
+from schemas.payment import CardPayment, CashPayment, UPIPayment
 from schemas.vehicles import Bike, Car, Van
 from services.rental_service import RentalService
 
@@ -47,8 +47,10 @@ class RentalSystemTests(unittest.TestCase):
     def test_payment_methods_accept_numeric_selection(self):
         card = CardPayment()
         upi = UPIPayment()
+        cash = CashPayment()
         self.assertEqual(card.process_payment(100).method, "Card")
         self.assertEqual(upi.process_payment(100).method, "UPI")
+        self.assertEqual(cash.process_payment(100).method, "Cash on Delivery")
 
     def test_invalid_rental_days(self):
         with self.assertRaises(InvalidRentalPeriodError):
@@ -75,6 +77,27 @@ class RentalSystemTests(unittest.TestCase):
         self.assertEqual(rental.final_amount, 6400)
         self.assertEqual(invoice.generate()["final_amount"], 6400)
         self.assertTrue(self.service.get_vehicle("V1").is_available())
+
+    def test_late_fee_is_paid_separately_before_return(self):
+        rental = self.service.rent_vehicle("C1", "V1", 3, CardPayment())
+        late_return = rental.expected_return_date + timedelta(days=1)
+        invoice = self.service.return_vehicle(
+            rental.rental_id, late_return, late_fee_payment_processor=UPIPayment()
+        )
+        self.assertEqual(invoice.generate()["late_fee"], 400)
+        self.assertEqual(rental.status, "COMPLETED")
+
+    def test_failed_late_fee_payment_keeps_rental_active(self):
+        rental = self.service.rent_vehicle("C1", "V1", 3, CardPayment())
+        late_return = rental.expected_return_date + timedelta(days=1)
+        with self.assertRaises(PaymentProcessingError):
+            self.service.return_vehicle(
+                rental.rental_id,
+                late_return,
+                late_fee_payment_processor=CardPayment(simulate_failure=True),
+            )
+        self.assertEqual(rental.status, "ACTIVE")
+        self.assertFalse(self.service.get_vehicle("V1").is_available())
 
     def test_json_persistence(self):
         rental = self.service.rent_vehicle("C1", "V1", 3, UPIPayment())

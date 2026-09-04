@@ -58,5 +58,65 @@
       "amount": 6000.0,
       "message": "Payment completed successfully."
     }
+  },
+  {
+    "rental_id": "R0004",
+    "customer_id": "vcti-001",
+    "vehicle_id": "KA001",
+    "start_date": "2026-09-04",
+    "expected_return_date": "2026-09-09",
+    "actual_return_date": "2026-09-07",
+    "days": 5,
+    "base_amount": 10000.0,
+    "late_fee": 0.0,
+    "final_amount": 10000.0,
+    "status": "COMPLETED",
+    "payment": {
+      "success": true,
+      "transaction_id": "UPI-CE9C72F3",
+      "method": "UPI",
+      "amount": 10000.0,
+      "message": "Payment completed successfully."
+    }
+  },
+  {
+    "rental_id": "R0005",
+    "customer_id": "vcti-004",
+    "vehicle_id": "KA006",
+    "start_date": "2026-09-05",
+    "expected_return_date": "2026-09-07",
+    "actual_return_date": "2026-09-12",
+    "days": 2,
+    "base_amount": 8400.0,
+    "late_fee": 4200.0,
+    "final_amount": 12600.0,
+    "status": "COMPLETED",
+    "payment": {
+      "success": true,
+      "transaction_id": "UPI-04BA7737",
+      "method": "UPI",
+      "amount": 8400.0,
+      "message": "Payment completed successfully."
+    }
+  },
+  {
+    "rental_id": "R0006",
+    "customer_id": "vcti-005",
+    "vehicle_id": "KA007",
+    "start_date": "2026-09-04",
+    "expected_return_date": "2026-09-08",
+    "actual_return_date": null,
+    "days": 4,
+    "base_amount": 18000.0,
+    "late_fee": 0.0,
+    "final_amount": 18000.0,
+    "status": "ACTIVE",
+    "payment": {
+      "success": true,
+      "transaction_id": "CASH-BADCE03F",
+      "method": "Cash on Delivery",
+      "amount": 18000.0,
+      "message": "Cash on delivery selected."
+    }
   }
 ]

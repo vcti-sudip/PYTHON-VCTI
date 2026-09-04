@@ -3,7 +3,7 @@ from pathlib import Path
 
 from schemas.customers import Customer
 from schemas.exceptions import RentalError, ValidationError
-from schemas.payment import CardPayment, UPIPayment
+from schemas.payment import CardPayment, CashPayment, UPIPayment
 from schemas.vehicles import Bike, Car, Van
 from services.rental_service import RentalService
 
@@ -134,15 +134,18 @@ def choose_payment_method():
     print("\nPayment method")
     print("1. Card")
     print("2. UPI")
-    choice = input("Select [1/2 or Card/UPI]: ").strip().lower()
+    print("3. Cash on Delivery")
+    choice = input("Select [1/2/3 or Card/UPI/Cash]: ").strip().lower()
     simulate_failure = input("Simulate payment failure? [y/N]: ").strip().lower() == "y"
 
     if choice in {"1", "card"}:
         return CardPayment(simulate_failure=simulate_failure)
     if choice in {"2", "upi"}:
         return UPIPayment(simulate_failure=simulate_failure)
+    if choice in {"3", "cash", "cash on delivery", "cod"}:
+        return CashPayment()
 
-    raise ValidationError("Invalid payment method. Enter 1/Card or 2/UPI.")
+    raise ValidationError("Invalid payment method. Enter 1/Card, 2/UPI, or 3/Cash.")
 
 
 def rent_vehicle(service):

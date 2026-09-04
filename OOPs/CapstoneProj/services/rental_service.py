@@ -115,11 +115,17 @@ class RentalService:
         self.save_data()
         return rental
 
-    def return_vehicle(self, rental_id, return_date=None):
+    def return_vehicle(self, rental_id, return_date=None, late_fee_payment_processor=None):
         rental = self.get_rental(rental_id)
         if rental.status != "ACTIVE":
             raise RentalStateError(f"Rental {rental_id} is not active.")
-        invoice = rental.complete_rental(return_date or date.today())
+        actual_return_date = return_date or date.today()
+        late_fee = rental.calculate_late_fee(actual_return_date)
+        if late_fee > 0 and late_fee_payment_processor is not None:
+            payment_result = late_fee_payment_processor.process_payment(late_fee)
+            if not payment_result.success:
+                raise PaymentProcessingError(payment_result.message)
+        invoice = rental.complete_rental(actual_return_date)
         rental.vehicle.mark_as_available()
         self.save_data()
         return invoice
